@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/javascript/init.js"></script>
+    <title>使用clush远程控制节点</title>
+</head>
+<body>
+    <div id="mainbox">
+        <div id="nodebox">
+            选择节点的界面
+            {}
+        </div>
+        <div id="optbox">
+            命令执行模块
+            <div id="apt-box">
+                <div>
+                    使用apt安装包, 请不要安装"在安装过程中需要额外提供输入"的包, 否则任务会卡住.<br>
+                    对这种包, 建议编写脚本, 上传到对应节点, 然后执行脚本进行安装
+                </div>
+                <div>
+                    <input type="text" name="packagename" placeholder="输入软件包的包名" id="apt-input">
+                    <input type="button" value="执行" id="apt-button">
+                </div>
+            </div>
+            <div id="copy-box">
+                <div>从主机复制文件到节点</div>
+                <div>
+                    <input type="text" name="filename" placeholder="输入要复制的文件名" id="src-input">
+                </div>
+                <div>
+                    <input type="text" name="filename" placeholder="输入目标目录名" id="dest-input">
+                    <input type="button" value="执行" id="copy-button">
+                </div>
+            </div>
+            <div id="rcopy-box">
+                <div>
+                    从节点复制文件到主机, 文件保存在/rcopy目录下, 文件会加上对应节点的IP地址作为区分<br>
+                    如果复制的是一个目录, 为了方便下载, 我们会将目录打包为tar.gz格式, 然后在文件名后加上节点的IP地址进行区分
+                </div>
+                <div>
+                    <input type="text" name="filename" placeholder="输入目标文件名" id="rcopy-input">
+                    <input type="button" value="执行" id="rcopy-button">
+                </div>
+            </div>
+            <script src="static/javascript/rcopy.js"></script>
+            <div id="upload-box">
+                <div>上传文件到主机, 如果上传的是groups.conf, 需要重新刷新页面使其生效.</div>
+                <div>此外, 上传的文件仅限小文件或者脚本, 大文件请直接用u盘拷到主机上的/store/目录下.</div>
+                <div>
+                    选择文件: <input type="file" name="file" id="upload-input01"/><input type="button" value="上传" id="upload-button01"/>
+                </div>
+                <div id="upload-result">&nbsp;</div>
+            </div>
+            <div id="download-box">
+                <div>下载rcopy复制的文件, 如果觉得速度太慢, 也可以自己去主机的/rcopy目录下用U盘复制</div>
+                <input type="button" value="下载" id="download-button">
+            </div>
+            <!-- 添加定制的内容 -->
+            {}
+            <!-- 添加节点用的选择框 -->
+            <div id="add-param">点击此处添加添加功能模块</div>
+        </div>
+        <div>
+            任务模块
+            <div id="quebox"></div>
+            <div id="quebox-copy"></div>
+        </div>
+    </div>
+</body>
+<script src="static/javascript/code.js"></script>
+<script src="static/javascript/upload.js"></script>
+<!-- 在这里可以补充其他的插件 -->
+</html>

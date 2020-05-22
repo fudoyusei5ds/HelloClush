@@ -1,0 +1,119 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+#mainbox {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    background-color: #d8d0d1;
+    grid-template-columns: 33% auto 33%;
+}
+
+#nodebox {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    overflow: auto;
+    background-color: #d8d0d1;
+    margin: 10px;
+}
+
+.nodeset {
+    margin: 0 10px;
+    margin-top: 10px;
+    background-color: #c8c5c2;
+    height: 58px;
+    line-height: 1.5em;
+    padding: 5px;
+}
+
+.selected {
+    background-color: #f6f6f6;
+    /* border: 1px solid #c8c5c2; */
+}
+
+#optbox {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    overflow: auto;
+    background-color: #d8d0d1;
+}
+
+#optbox>div {
+    margin: 0 10px;
+    margin-top: 10px;
+    background-color: coral;
+    min-height: 80px;
+    padding: 10px;
+}
+
+#mainbox>div {
+    position: relative;
+}
+#quebox {
+    width: 100%;
+    height: 100%;
+}
+#quebox-copy {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.queue-item {
+    margin: 5px;
+    height: 100px;
+    display: block;
+    user-select: none;
+}
+
+.hold-item {
+    margin: 5px;
+    height: 100px;
+    width: 100%;
+    display: block;
+    user-select: none;
+    background-color: rgba(22, 235, 217, 0.3);
+}
+.dragged {
+    position: absolute;
+    width: 100%;
+    /* opacity: 0.8; */
+    z-index: 100;
+}
+
+.queue-item:hover {
+    cursor: pointer;
+}
+.state-wait {
+    background-color: whitesmoke;
+}
+.state-run {
+    background-color: skyblue;
+}
+.state-fail {
+    background-color: red;
+}
+.state-succ {
+    background-color: greenyellow;
+}
+.state-abort {
+    background-color: rgb(207, 105, 22);
+}
+
+.queue-item>div {
+    height: 25px;
+    width: 100%;
+}
