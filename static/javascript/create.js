@@ -50,15 +50,15 @@ document.querySelector("#save").onclick = () => {
     for (let i=0; i<param_index; ++i) {
         if (item_list[i].className == "param-item") {
             cmd_line += "null,"
-            let param_name = item_list[i].firstChild.value
-            let param_desc = item_list[i].lastChild.value
+            let param_name = item_list[i].firstElementChild.value
+            let param_desc = item_list[i].children[1].value
             cmd_div += '<p>%s:<input type="text" placeholder="%s" class="param-input"></p>'.format(param_name, param_desc)
         }
         else if (item_list[i].className == "hide-item") {
-            let param_name = item_list[i].firstChild.value
+            let param_name = item_list[i].firstElementChild.value
             cmd_line += "'" + param_name + "',"
         }
-        params.push([param_name, param_desc])
+        // params.push([param_name, param_desc])
     }
     // 应该生成一串随机数作为id
     let random_id = "cmd"+Math.floor(Math.random()*1000000000000000)
