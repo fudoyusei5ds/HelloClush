@@ -1,0 +1,40 @@
+
+    <div id="cmd639243297570702-box">
+        <p>用tar解压压缩包</p>
+        <p>filename:<input type="text" placeholder="删除" class="param-input"></p>
+        <p><input type="button" value="执行" id="cmd639243297570702-button"></p>
+    </div>
+    <script>
+        // 直接反映, 应该没有问题
+        document.querySelector("#cmd639243297570702-button").onclick = (evt) => {
+            let cmd_list = ["tar'-xf',null,"]  // 命令数组, 未命令的参数数量和input的个数是一样的
+            if(selectnode == ""){
+                this.alert("尚未选择节点")
+                return 
+            }
+            // 点击发送按钮, 把命令发送到他该去的地方
+            // 哈哈哈哈哈哈哈哈哈哈哈哈
+            let input_list = document.querySelectorAll("#cmd639243297570702-box>p>.param-input")
+            let index = 0
+            for (let i=0; i<2; ++i) {
+                if (cmd_list[i] == null) {
+                    if (input_list[index].value) {
+                        cmd_list[i] = input_list[index].value
+                        index += 1
+                    }
+                    else {
+                        alert("参数不能为空")
+                        return 
+                    }
+                }
+            }
+            let cmd = cmd_list.reduce((a, b) => { return a+" "+b })
+            let data = {
+                "nodes": selectnode,
+                "type": "newjob",
+                "cmd": cmd 
+            }
+            ws.send(JSON.stringify(data))
+        }
+    </script>
+    
