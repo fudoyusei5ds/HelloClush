@@ -1,16 +1,16 @@
-from tornado.web import RequestHandler
+# 上传请求的处理
 
-class CreateHandler(RequestHandler):
+from tornado.web import RequestHandler
+import os
+
+class UploadHandler(RequestHandler):
     def post(self):
         filename = self.get_argument("filename", default="")
         if filename == "": # or os.path.exists("store/"+filename):
             self.set_status(400)
             self.write("文件名不存在")
         else:
-            with open("extent/"+filename, "w") as f:
-                f.write(self.request.body.decode())
+            fd = os.open("store/"+filename, os.O_RDWR|os.O_CREAT)
+            os.write(fd, self.request.body)
+            os.close(fd)
             self.set_status(200)
-
-    def get(self):
-        with open("static/create.html", "r") as f:
-            self.write(f.read())

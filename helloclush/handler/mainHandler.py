@@ -1,3 +1,5 @@
+# 主页面, 用户访问网站的时候使用
+
 from tornado.web import RequestHandler
 from ClusterShell.NodeSet import NodeSet
 import os
