@@ -1,8 +1,8 @@
 import tornado
 from tornado.ioloop import IOLoop
 
-from helloWorldApp import HelloWorldApp
-from jobManager import JobManager
+from helloclush import HelloWorldApp
+from helloclush import JobManager
 
 def main():
     app = HelloWorldApp()

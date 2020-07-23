@@ -4,7 +4,7 @@ from ClusterShell.Task import Task, task_self, task_wait
 from ClusterShell.NodeSet import NodeSet
 from ClusterShell.Worker.Ssh import WorkerSsh
 
-from jobManager import JobManager 
+from .jobManager import JobManager 
 
 import json, os
 

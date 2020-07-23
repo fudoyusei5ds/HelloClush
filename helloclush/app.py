@@ -2,10 +2,10 @@ from tornado.web import Application, StaticFileHandler
 from ClusterShell.Task import Task, task_self
 from ClusterShell.NodeSet import NodeSet
 
-from mainHandler import MainHandler, HelpHandler
-from mainWebSocket import MainWebSocket
-from uploadHandler import UploadHandler
-from createHandler import CreateHandler
+from .request_handler import MainHandler, HelpHandler
+from .request_handler import UploadHandler
+from .request_handler import CreateHandler
+from .mainWebSocket import MainWebSocket
 
 class HelloWorldApp(Application):
     def __init__(self):
