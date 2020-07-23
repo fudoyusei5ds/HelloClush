@@ -4,12 +4,14 @@ from tornado.web import RequestHandler
 from ClusterShell.NodeSet import NodeSet
 import os
 
+from ..config import GROUPS_CONFIG, STATICDIR, CUSTOMDIR
+
 # 主页面
 class MainHandler(RequestHandler):
     def get(self):
         nodes_list = {}
-        if os.path.isfile("store/groups.conf"):
-            with open("store/groups.conf", "r") as f:
+        if os.path.isfile(GROUPS_CONFIG):
+            with open(GROUPS_CONFIG, "r") as f:
                 for l in f:
                     if ":" in l:
                         l = l.strip().split(":",1)
@@ -19,13 +21,13 @@ class MainHandler(RequestHandler):
         self.application.nodes_list = nodes_list
         
         # 添加读取组的配置文件, 然后写入到网页中
-        with open("static/index.html", "r") as f:
+        with open(STATICDIR + "index.html", "r") as f:
             self.write(f.read().format(self.build_html(nodes_list), self.get_extent()))
 
     def get_extent(self) -> str:
         s = ""
-        for f in os.listdir("extent"):
-            with open("extent/"+f, "r") as r:
+        for f in os.listdir(CUSTOMDIR):
+            with open(CUSTOMDIR+f, "r") as r:
                 s += r.read()
         return s
 

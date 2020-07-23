@@ -1,6 +1,7 @@
 # 当用户创建新命令模块的时候使用
 
 from tornado.web import RequestHandler
+from ..config import CUSTOMDIR, STATICDIR
 
 class CreateHandler(RequestHandler):
     def post(self):
@@ -9,10 +10,10 @@ class CreateHandler(RequestHandler):
             self.set_status(400)
             self.write("文件名不存在")
         else:
-            with open("extent/"+filename, "w") as f:
+            with open(CUSTOMDIR+filename, "w") as f:
                 f.write(self.request.body.decode())
             self.set_status(200)
 
     def get(self):
-        with open("static/create.html", "r") as f:
+        with open(STATICDIR + "create.html", "r") as f:
             self.write(f.read())

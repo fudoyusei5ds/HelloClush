@@ -7,13 +7,15 @@ from .request_handler import UploadHandler
 from .request_handler import CreateHandler
 from .mainWebSocket import MainWebSocket
 
+from .config import STATICDIR
+
 class HelloWorldApp(Application):
     def __init__(self):
         self.nodes_list = {}
         # 注册路由
         handlers = [
             (r'/', MainHandler),
-            (r'/static/(.*)', StaticFileHandler, {"path": "./static"}), 
+            (r'/static/(.*)', StaticFileHandler, {"path": STATICDIR}), 
             (r'/MainSocket', MainWebSocket),
             (r'/upload', UploadHandler),
             (r'/help', HelpHandler),
